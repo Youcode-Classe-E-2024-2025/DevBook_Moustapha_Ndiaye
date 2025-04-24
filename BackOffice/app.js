@@ -1,0 +1,31 @@
+const express = require('express');
+const dotenv = require('dotenv');
+const sequelize = require('./config/database'); 
+
+dotenv.config();
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+
+// Define routes before attempting connection or starting server
+app.get('/', (req, res) => { 
+    res.send('DevBook API');
+});
+
+// Attempt to connect to the database
+sequelize.authenticate()
+    .then(() => {
+        console.log('Database connection has been established successfully.');
+
+        // Start the Express server only after successful DB connection
+        app.listen(PORT, () => {
+            console.log(`Server is running on http://localhost:${PORT}`);
+        });
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+        // Optional: exit the process if DB connection fails on startup
+        process.exit(1);
+    });
+
