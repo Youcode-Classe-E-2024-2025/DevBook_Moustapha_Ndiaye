@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const sequelize = require('./config/database'); 
+const authRoutes = require('./routes/authRoutes');
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,16 @@ app.use(express.json());
 app.get('/', (req, res) => { 
     res.send('DevBook API');
 });
+
+// use routes authentification througt api/auth
+app.use(
+    '/api/auth', authRoutes
+);
+
+// use routes login
+app.use(
+    '/api/auth', authRoutes
+);
 
 // Attempt to connect to the database
 sequelize.authenticate()
