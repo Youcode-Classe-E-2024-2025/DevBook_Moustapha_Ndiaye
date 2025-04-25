@@ -2,6 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const sequelize = require('./config/database'); 
 const authRoutes = require('./routes/authRoutes');
+const categoryRoutes = require('./routes/categoryRoutes');
+const bookRoutes = require('./routes/bookRoutes'); 
 
 dotenv.config();
 const app = express();
@@ -23,6 +25,9 @@ app.use(
 app.use(
     '/api/auth', authRoutes
 );
+
+app.use('/api/categories', categoryRoutes); 
+app.use('/api/books', bookRoutes);   
 
 // Attempt to connect to the database
 sequelize.authenticate()
