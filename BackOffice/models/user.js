@@ -7,6 +7,13 @@ class User extends Model {
   async comparePassword(candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
   }
+
+  static associate(models) {
+    this.hasMany(models.Loan, {
+      foreignKey: 'member_id', 
+      as: 'loans'              
+    });
+  }
 }
 
 User.init({
