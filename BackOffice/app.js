@@ -4,11 +4,13 @@ const sequelize = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const bookRoutes = require('./routes/bookRoutes'); 
+const cors = require('cors');
 
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 // Define routes before attempting connection or starting server
