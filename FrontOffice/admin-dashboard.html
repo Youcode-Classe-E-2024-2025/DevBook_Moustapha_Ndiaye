@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        nav { background-color: #333; padding: 10px; margin-bottom: 20px; }
+        nav button { margin-left: 10px; padding: 5px 10px; cursor: pointer; }
+        h1, h2 { color: #333; }
+        #content { padding: 15px; border: 1px solid #ccc; min-height: 200px; }
+        #category-list ul { list-style: none; padding: 0; }
+        #category-list li { padding: 8px; border-bottom: 1px solid #eee; }
+        .error { color: red; font-weight: bold; }
+        .loading { font-style: italic; color: #666; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <span style="color: white; font-weight: bold;">Admin Dashboard</span>
+        <button id="logout-button" style="float: right;">Logout</button>
+    </nav>
+
+    <h1>Welcome, Admin!</h1>
+
+    <div id="content">
+        <h2>Manage Categories</h2>
+        <div id="category-list">
+            <p class="loading">Loading categories...</p>
+            <!-- Categories will be loaded here by JavaScript -->
+        </div>
+        <hr>
+        <div id="add-category-form" style="margin-top: 20px;">
+             <!-- We will add a form here later -->
+             <p><em>Category creation form will go here.</em></p>
+        </div>
+
+        <h2>Manage Books</h2>
+         <div id="book-list">
+            <p class="loading">Loading books...</p>
+            <!-- Books will be loaded here later -->
+         </div>
+
+    </div>
+
+    <!-- Include a separate JS file for dashboard logic -->
+    <script src="admin-dashboard.js" defer></script>
+</body>
+</html>
